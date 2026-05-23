@@ -8,16 +8,26 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f0f4f8;
   color: #1a202c;
+  line-height: 1.6;
 }
 
-:root {
-  --primary: #2E75B6;
-  --primary-dark: #1F5E9E;
-  --success: #38a169;
-  --warning: #d69e2e;
-  --danger: #e53e3e;
-  --light: #f7fafc;
-  --border: #e2e8f0;
-  --text: #1a202c;
-  --text-light: #718096;
+input, select, textarea, button {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f4f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
 }

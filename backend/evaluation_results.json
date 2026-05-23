@@ -1,0 +1,50 @@
+{
+  "summary": [
+    {
+      "name": "High Risk Case",
+      "endpoints_tested": [
+        "FRIA",
+        "Cybersecurity",
+        "XAI",
+        "Bias",
+        "Risk"
+      ],
+      "all_passed": true,
+      "completion_time_s": 5.89
+    },
+    {
+      "name": "Low Risk Case",
+      "endpoints_tested": [
+        "FRIA",
+        "Cybersecurity",
+        "XAI",
+        "Bias",
+        "Risk"
+      ],
+      "all_passed": true,
+      "completion_time_s": 0.66
+    },
+    {
+      "name": "Medium Risk Case",
+      "endpoints_tested": [
+        "FRIA",
+        "Cybersecurity",
+        "XAI",
+        "Bias",
+        "Risk"
+      ],
+      "all_passed": true,
+      "completion_time_s": 0.91
+    }
+  ],
+  "metrics": {
+    "legal_requirement_coverage_pct": 100.0,
+    "threat_categories_covered": "8/8",
+    "fundamental_rights_assessed": "7/7",
+    "articles_covered": 5,
+    "test_cases_passed": "3/3",
+    "avg_completion_time_s": 2.49,
+    "avg_xai_fidelity": 0.8,
+    "bias_toolkit": "IBM AIF360"
+  }
+}

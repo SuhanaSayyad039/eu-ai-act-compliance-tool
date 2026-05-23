@@ -59,6 +59,7 @@ def load_german_credit():
     y = (df['target'] == 2).astype(int).reset_index(drop=True)
     return X, y
 
+
 feature_descriptions = {
     'credit_amount': 'Total credit amount requested',
     'duration': 'Duration of credit in months',
@@ -82,6 +83,7 @@ feature_descriptions = {
     'foreign_worker': 'Is foreign worker'
 }
 
+
 @router.post("/assess")
 async def assess_xai(system: CreditScoringSystem):
     try:
@@ -96,14 +98,14 @@ async def assess_xai(system: CreditScoringSystem):
         model = GradientBoostingClassifier(n_estimators=100, random_state=42)
         model.fit(X_train, y_train)
 
-        # Try SHAP first, fall back to feature importance
+        # Try SHAP first, fall back to feature importance on any error
         try:
             import shap
             explainer = shap.TreeExplainer(model)
             shap_values = explainer.shap_values(X_test.iloc[:100])
             importances = np.abs(shap_values).mean(0)
             method_used = "SHAP (SHapley Additive exPlanations)"
-        except ImportError:
+        except Exception:
             importances = model.feature_importances_
             method_used = "Gradient Boosting Feature Importance"
 
@@ -146,7 +148,7 @@ async def assess_xai(system: CreditScoringSystem):
             "Provide SHAP-based explanations to individuals when credit decisions are made",
             "Ensure explanations are written in plain language accessible to non-technical users",
             "Log all explanations provided for audit purposes under Article 12",
-            f"Top driver of decisions is '{top_features.iloc[0]['feature']}' - review this feature for potential bias",
+            f"Top driver of decisions is '{top_features.iloc[0]['feature']}' — review this feature for potential bias",
             "Implement Article 13 compliant explanation interface before deployment"
         ]
 
